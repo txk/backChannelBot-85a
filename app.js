@@ -20,6 +20,7 @@ bot.dialog('/', [
 
 //Creates a backchannel event
 const createEvent = (eventName, value, address) => {
+    console.log("backChannelBot-85a#createEvent");
     var msg = new builder.Message().address(address);
     msg.data.type = "event";
     msg.data.name = eventName;
