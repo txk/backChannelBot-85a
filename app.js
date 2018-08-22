@@ -13,14 +13,12 @@ bot.on("event", function (event) {
 //Basic root dialog which takes an inputted color and sends a changeBackground event. No NLP, regex, validation here - just grabs input and sends it back as an event. 
 bot.dialog('/', [
     function (session) {
-        var text = session.message.text;
-        if ( '0' == text) {
-            text = 'BLACK';
-        }
-        var reply = createEvent("changeBackground", text, session.message.address);
+        var reply = createEvent("changeBackground", session.message.text, session.message.address);
         session.endDialog(reply);
     }
 ]);
+
+__hack85a = 0;
 
 //Creates a backchannel event
 const createEvent = (eventName, value, address) => {
@@ -28,7 +26,14 @@ const createEvent = (eventName, value, address) => {
     var msg = new builder.Message().address(address);
     msg.data.type = "event";
     msg.data.name = eventName;
-    msg.data.value = value;
+
+    if (__hack85a == 0) {
+      msg.data.value = "GREEN";
+      __hack85a == 1;
+    } else {
+      msg.data.value = "WHITE";
+      __hack85a == 0;
+    }
     return msg;
 }
 
