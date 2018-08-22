@@ -29,10 +29,10 @@ const createEvent = (eventName, value, address) => {
 
     if (__hack85a == 0) {
       msg.data.value = "GREEN";
-      __hack85a == 1;
+      __hack85a = 1;
     } else {
       msg.data.value = "WHITE";
-      __hack85a == 0;
+      __hack85a = 0;
     }
     return msg;
 }
